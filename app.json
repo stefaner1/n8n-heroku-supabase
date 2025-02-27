@@ -11,6 +11,11 @@
     "logo": "https://raw.githubusercontent.com/n8n-io/n8n-heroku/main/n8n_logo.png",
     "success_url": "/",
     "stack": "container",
+    "addons": [
+      {
+        "plan": "papertrail:choklad"
+      }
+    ],
     "env": {
       "GENERIC_TIMEZONE": {
         "description": "Time Zone to use with Heroku. You can find the name of your timezone for example here: https://momentjs.com/timezone/.",
@@ -24,20 +29,13 @@
         "description": "Replace <appname> with your Heroku application name. This will ensure the correct webhook URLs are being shown in n8n.",
         "value": "https://<appname>.herokuapp.com"
       },
+      "DATABASE_URL": {
+        "description": "Your Supabase PostgreSQL connection string",
+        "required": true
+      },
       "DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED": {
-        "description": "SSL is required to connect to Postgres on Heroku",
+        "description": "SSL is required to connect to Supabase",
         "value": "false"
       }
-    },
-    "addons": [
-      {
-        "plan": "heroku-postgresql",
-        "options": {
-          "version": "14"
-        }
-      },
-      {
-        "plan": "papertrail:choklad"
-      }
-    ]
+    }
   }
