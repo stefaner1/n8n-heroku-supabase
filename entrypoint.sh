@@ -15,6 +15,10 @@ echo "$N8N_DB_SCHEME://$N8N_DB_USER:$N8N_DB_PASSWORD@$N8N_DB_HOSTPORT/$N8N_DB_DA
 N8N_DB_HOST="$(echo $N8N_DB_HOSTPORT | sed -e 's,:.*,,g')"
 N8N_DB_PORT="$(echo $N8N_DB_HOSTPORT | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[^0-9],,g')"
 
+# Force IPv4 and SSL for Supabase connection
+export PGSSLMODE=require
+export DB_POSTGRESDB_HOST_ADDRESS_FAMILY=ipv4
+
 export DB_TYPE=postgresdb
 export DB_POSTGRESDB_HOST=$N8N_DB_HOST
 export DB_POSTGRESDB_PORT=$N8N_DB_PORT
