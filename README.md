@@ -9,6 +9,8 @@ This is a [Heroku](https://heroku.com/)-focused container implementation of [n8n
 ### Prerequisites
 1. A Supabase project with your PostgreSQL database
 2. Database connection string from Supabase project settings
+! Important ! Use the Supabase Transaction Pooler URL:
+Supabase provides a pooler URL option (often found in your project’s settings) that returns an IPv4 address. Switching to that URL will allow your app to connect over IPv4, which Heroku supports.
 
 ### Deployment
 Use the **Deploy to Heroku** button above to launch n8n on Heroku. When deploying:
